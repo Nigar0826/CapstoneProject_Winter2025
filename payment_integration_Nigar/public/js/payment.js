@@ -69,7 +69,7 @@ form.addEventListener("submit", async (event) => {
     const response = await fetch("http://localhost:4000/api/payment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 1000, currency: "usd" }), // Adjust amount/currency as needed
+      body: JSON.stringify({ amount: 1000, currency: "cad" }), 
     });
 
     if (!response.ok) {
@@ -81,18 +81,24 @@ form.addEventListener("submit", async (event) => {
     // Confirm the card payment using the client secret
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: cardNumber, // Card details gathered from the individual fields
+        card: cardNumber, 
       },
     });
 
     if (result.error) {
-      // Handle payment failure
-      console.error("Payment failed:", result.error.message);
-      alert(`Payment failed: ${result.error.message}`);
+      // Debugging: Log the full error object
+      console.log("Error Object:", result.error);
+
+      // Handle payment failure with custom messages
+      if (result.error.type === "card_error" && result.error.code === "expired_card") {
+        alert("Invalid payment. Your card is expired.");
+      } else {
+        alert(`Payment failed: ${result.error.message}`);
+      }
     } else {
       // Handle payment success
       console.log("Payment successful:", result.paymentIntent.id);
-      alert(`Payment successful! Payment Intent ID: ${result.paymentIntent.id}`);
+      alert(`Payment successful! Payment ID: ${result.paymentIntent.id}`);
     }
   } catch (error) {
     console.error("Error during payment process:", error.message);

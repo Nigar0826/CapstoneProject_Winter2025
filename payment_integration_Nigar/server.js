@@ -18,6 +18,20 @@ app.use(express.static("public"));
 // API Routes
 app.use("/api/payment", paymentRoutes);
 
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500).json({ error: "Internal Server Error: Something went wrong." });
+});
+
+// Handle 404 (Not Found)
+app.use((req, res) => {
+  res.status(404).json({ error: "Resource not found." });
+});
+
 // Start the server
 const PORT = 4000;
 app.listen(PORT, () => {
