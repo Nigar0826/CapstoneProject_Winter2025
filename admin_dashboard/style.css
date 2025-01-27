@@ -27,7 +27,7 @@ body {
     margin-bottom: 20px;
     font-size: 24px;
     text-align: center;
-    color: #4CAF50;
+    color: skyblue;
 }
 
 .sidebar .menu {
@@ -63,7 +63,7 @@ body {
 
 .section h2 {
     font-size: 24px;
-    color: #4CAF50;
+    color:black;
     margin-bottom: 20px;
 }
 
@@ -96,7 +96,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #4CAF50;
+    background-color: blueviolet;
     color: white;
 }
 
@@ -112,7 +112,7 @@ table tr:hover {
 button {
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: #4CAF50;
+    background-color: blueviolet;
     color: white;
     border: none;
     border-radius: 5px;
@@ -120,7 +120,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: goldenrod;
 }
 
 /* Modal Styles */
