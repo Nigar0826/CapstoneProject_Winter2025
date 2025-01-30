@@ -73,7 +73,7 @@ body {
 }
 
 .search-bar input {
-    width: 100%;
+    width: 99%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -131,16 +131,17 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+   
 }
 
 .modal-content {
     background: white;
     padding: 20px;
-    border-radius: 8px;
-    width: 400px;
+    border-radius: 5px;
+    width: 300px;
     position: relative;
 }
 
@@ -148,7 +149,7 @@ button:hover {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: #333;
     cursor: pointer;
@@ -156,4 +157,106 @@ button:hover {
 
 .close-modal:hover {
     color: #4CAF50;
+}
+/* Form Styling Inside Modal */
+#customer-form {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+}
+
+#customer-form label {
+    margin-bottom: 5px; /* Add space below label */
+    font-weight: bold;
+}
+
+#customer-form input {
+    padding: 10px;
+    margin-bottom: 15px; /* Space between fields */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#customer-form button {
+    padding: 10px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#customer-form button:hover {
+    background-color: goldenrod;
+}
+
+/* Orders/Bookings Section */
+#bookings {
+    display: none; /* Initially hidden */
+    margin: 0 auto; /* Center align the section */
+    width: 95%; /* Same width as the customers section */
+}
+
+#bookings h2 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Search Bar for Orders */
+#bookings .search-bar {
+    margin-bottom: 20px;
+}
+
+#bookings .search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Orders Table */
+#order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#order-table th, #order-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#order-table th {
+    background-color: blueviolet; /* Same styling as customers */
+    color: white;
+}
+
+#order-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#order-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Add Order Button */
+#add-order-btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-order-btn:hover {
+    background-color: goldenrod;
 }

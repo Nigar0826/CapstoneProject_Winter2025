@@ -14,9 +14,11 @@
             <h2>Dashboard</h2>
             <ul class="menu">
                 <li onclick="showSection('customers')">Customers</li>
-                <li>Orders</li>
-                <li>Analytics</li>
-                <li>Feedbacks</li>
+                <li onclick="showSection('bookings')">Orders/Bookings</li>
+                <li onclick="showSection('offerings')">Offerings</li>
+                <li onclick="showSection('analytics')">Analytics</li>
+                <li onclick="showSection('feedbacks')">Feedbacks</li>
+                
             </ul>
         </div>
 
@@ -43,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody id="customer-table-body">
-                        <!-- Dynamic customer rows -->
+                        <!-- Dynamic customer rows should be seen here from the backend -->
                     </tbody>
                 </table>
 
@@ -65,6 +67,67 @@
                             <button type="button" onclick="saveCustomer()">Save</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+     
+        <div id="bookings" class="section" style="display: none;">
+            <h2>Orders / Bookings</h2>
+        
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="search-orders" placeholder="Search orders..." oninput="searchOrders()">
+            </div>
+        
+            <!-- Orders Table -->
+            <table id="order-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Service/Product</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="order-table-body">
+                    <!-- Dynamic Order Rows will be inserted here -->
+                </tbody>
+            </table>
+        
+            <!-- Add Order Button -->
+            <button id="add-order-btn" onclick="showAddOrderModal()">Add Booking / Order</button>
+        
+            <!-- Modal for Adding/Editing Orders -->
+            <div id="order-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+                    <h3 id="order-modal-title">Add Booking / Order</h3>
+                    <form id="order-form">
+                        <label for="order-customer">Customer Name:</label>
+                        <input type="text" id="order-customer" required>
+                        
+                        <label for="order-item">Service/Product:</label>
+                        <input type="text" id="order-item" required>
+                        
+                        <label for="order-date">Date:</label>
+                        <input type="date" id="order-date" required>
+                        
+                        <label for="order-time">Time:</label>
+                        <input type="time" id="order-time" required>
+                        
+                        <label for="order-status">Status:</label>
+                        <select id="order-status" required>
+                            <option value="Pending">Pending</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+        
+                        <button type="button" onclick="saveOrder()">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
