@@ -35,3 +35,8 @@
 - • Method POST - Add a new customer
 - • Method PUT - /api/customer/:id - Edit a customer
 - • Method Delete - /api/customer/:id - Delete a customer
+
+### MySQL Database
+
+- Create Schema named "biz_horizon"
+- Import SQLdump databases into biz_horizon
