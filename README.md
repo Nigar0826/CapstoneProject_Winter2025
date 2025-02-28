@@ -1,6 +1,6 @@
 # Backend
 
-## Tech stack - Node.js, Express, MySQL
+## Tech stack - Node.js, Express, MySQL, JWT, bcrypt
 
 ###
 Worked on:
