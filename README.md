@@ -3,10 +3,14 @@
 ## Tech stack - Node.js, Express, MySQL
 
 ###
-
-1. User Registration
-2. Get Product Catalog
-3. Customers (CRUD)
+Worked on:
+1. User Registration API
+2. Get Product Catalog API
+3. Customers (CRUD) API
+4. Orders API
+5. Analytics API
+6. Analytics Page (Frontend)
+7. Launch Page (Frontend)
 
 ### Prerequisites
 
