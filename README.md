@@ -35,10 +35,8 @@ Worked on:
 - • /api/register - Register new client
 - • /api/catalog - get list of products from catalog
 - • /api/customer
-- • Method GET - Get list of all customers
-- • Method POST - Add a new customer
-- • Method PUT - /api/customer/:id - Edit a customer
-- • Method Delete - /api/customer/:id - Delete a customer
+- • /api/users
+- • /api/analytics/sales-summary 
 
 ### MySQL Database
 
