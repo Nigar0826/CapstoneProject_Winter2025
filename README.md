@@ -9,7 +9,7 @@ Worked on:
 3. Customers (CRUD) API
 4. Orders API
 
-   On Feb 27, 2025: What has been added 
+   #### On Feb 27, 2025: What has been added 
 6. Analytics API
 7. Analytics Page (Frontend)
 8. Launch Page (Frontend)
@@ -24,7 +24,7 @@ Worked on:
 - • npm install
 - • npm install express mysql2
 
-  new required instals:
+  #### new required instals:
 - • npm install bcrypt, jwt
 
 ### Start the Server:
@@ -42,7 +42,7 @@ Worked on:
 - • /api/customer
 - • /api/users
 
-  Feb 27, 2025: what's added ?
+  #### Feb 27, 2025: what's added ?
 
 - • /api/analytics/sales-summary
 - • /home
