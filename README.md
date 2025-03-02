@@ -1,12 +1,18 @@
 # Backend
 
-## Tech stack - Node.js, Express, MySQL
+## Tech stack - Node.js, Express, MySQL, JWT, bcrypt
 
 ###
+Worked on:
+1. User Registration API
+2. Get Product Catalog API
+3. Customers (CRUD) API
+4. Orders API
 
-1. User Registration
-2. Get Product Catalog
-3. Customers (CRUD)
+   #### On Feb 27, 2025: What has been added 
+6. Analytics API
+7. Analytics Page (Frontend)
+8. Launch Page (Frontend)
 
 ### Prerequisites
 
@@ -18,23 +24,28 @@
 - • npm install
 - • npm install express mysql2
 
+  #### new required instals:
+- • npm install bcrypt, jwt
+
 ### Start the Server:
 
-- node server.js
+- npm start
 
 ### Base URL
 
-- http://localhost:3000
+- http://localhost:4000
 
 ### Endpoints
 
 - • /api/register - Register new client
 - • /api/catalog - get list of products from catalog
 - • /api/customer
-- • Method GET - Get list of all customers
-- • Method POST - Add a new customer
-- • Method PUT - /api/customer/:id - Edit a customer
-- • Method Delete - /api/customer/:id - Delete a customer
+- • /api/users
+
+  #### Feb 27, 2025: what's added ?
+
+- • /api/analytics/sales-summary
+- • /home
 
 ### MySQL Database
 
