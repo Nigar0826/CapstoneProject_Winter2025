@@ -8,9 +8,11 @@ Worked on:
 2. Get Product Catalog API
 3. Customers (CRUD) API
 4. Orders API
-5. Analytics API
-6. Analytics Page (Frontend)
-7. Launch Page (Frontend)
+
+   On Feb 27, 2025: What has been added 
+6. Analytics API
+7. Analytics Page (Frontend)
+8. Launch Page (Frontend)
 
 ### Prerequisites
 
@@ -22,9 +24,12 @@ Worked on:
 - • npm install
 - • npm install express mysql2
 
+  new required instals:
+- • npm install bcrypt, jwt
+
 ### Start the Server:
 
-- node server.js
+- npm start
 
 ### Base URL
 
@@ -36,7 +41,11 @@ Worked on:
 - • /api/catalog - get list of products from catalog
 - • /api/customer
 - • /api/users
-- • /api/analytics/sales-summary 
+
+  Feb 27, 2025: what's added ?
+
+- • /api/analytics/sales-summary
+- • /home
 
 ### MySQL Database
 
