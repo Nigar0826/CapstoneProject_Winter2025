@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard & Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+    <script src="/js/payment.js"></script>
+</head>
+<body>
+
+    <!-- Admin Dashboard Layout -->
+    <div id="dashboard-layout">
+        <div class="dashboard">
+            <div class="sidebar">
+                <h2>Dashboard</h2>
+                <ul class="menu">
+                    <li onclick="showSection('customers')">Customers</li>
+                    <li onclick="showSection('payments')">Payments</li>
+                    <li onclick="showSection('orders')">Orders</li>
+                    <!-- <li onclick="showSection('analytics')">Analytics</li> -->
+                    <li><a href="http://localhost:4000/analytics.html">Analytics</a></li>
+                    <li onclick="showSection('feedbacks')">Feedbacks</li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Customers Section -->
+                <div id="customers" class="section">
+                    <h2>Customers</h2>
+                    <div class="search-bar">
+                        <input type="text" id="search-customers" placeholder="Search customers..." oninput="searchCustomers()">
+                    </div>
+                    <table id="customer-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-table-body"></tbody>
+                    </table>
+                    <button id="add-customer-btn" onclick="showAddCustomerModal()">Add Customer</button>
+                </div>
+
+                <!-- Payment Section -->
+                <div id="payments" class="section" style="display: none;">
+                    <h2>Stripe Payment</h2>
+                    <form id="payment-form">
+                        <label for="amount">Enter Payment Amount (CAD):</label>
+                        <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
+                        <div id="card-number"></div>
+                        <div id="card-expiry"></div>
+                        <div id="card-cvc"></div>
+                        <button id="submit">Pay</button>
+                        <p id="payment-message" class="hidden"></p>
+                    </form>
+                </div>
+
+                
+<!-- Sales Analytics Section -- if need to open in the admin window -->
+<!-- <div id="analytics" class="section" style="display: none;">
+    <div class="header-section text-center">
+      <h1>Sales Analytics</h1>
+    </div> -->
+  
+    <!-- Total Sales and Total Orders Side by Side -->
+    <!-- <div class="row mt-4">
+      <div class="col-md-6">
+        <div id="totalSales" class="summary card">
+          <div class="card-header">Total Sales</div>
+          <div class="card-body">
+            <h2>$<span id="totalSalesAmount">0</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="totalOrders" class="summary card">
+          <div class="card-header">Total Orders</div>
+          <div class="card-body">
+            <h2><span id="totalOrdersCount">0</span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+   -->
+    <!-- Sales by Product Chart and Sales by Customer Chart Side by Side -->
+    <!-- <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Sales by Product Chart</div>
+          <div class="card-body" style="height: 250px;">
+            <canvas id="salesByProductChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Sales by Customer Chart</div>
+          <div class="card-body" style="height: 250px;">
+            <canvas id="salesByCustomerChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Sales by Month Chart</div>
+          <div class="card-body" style="height: 250px;">
+            <canvas id="salesByMonthChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+   -->
+  
+  
+    <!-- Sales by Product Table and Sales by Customer Table Side by Side -->
+    <!-- <div class="row mt-4">
+      <div class="col-md-6">
+        <div id="salesByProduct" class="summary card sales-analytics-table">
+          <div class="card-header">Sales by Product</div>
+          <div class="card-body">
+            <table class="table table-striped sales-analytics-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Sales</th>
+                </tr>
+              </thead>
+              <tbody id="salesByProductTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="salesByCustomer" class="summary card sales-analytics-table">
+          <div class="card-header">Sales by Customer</div>
+          <div class="card-body">
+            <table class="table table-striped sales-analytics-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Sales</th>
+                </tr>
+              </thead>
+              <tbody id="salesByCustomerTable">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+  
+      $(document).ready(function () {
+        $.ajax({
+          url: '/api/analytics/sales-summary',
+          method: 'GET',
+          success: function (data) {
+            $('#totalSalesAmount').text(data.totalSales[0].total_sales);
+            $('#totalOrdersCount').text(data.totalOrders[0].total_orders);
+  
+            // Update sales by product table
+            let salesByProductTable = '';
+            data.salesByProduct.forEach(product => {
+              salesByProductTable += `<tr><td>${product.name}</td><td>$${product.sales}</td></tr>`;
+            });
+            $('#salesByProductTable').html(salesByProductTable);
+  
+            // Update sales by customer table
+            let salesByCustomerTable = '';
+            data.salesByCustomer.forEach(customer => {
+              salesByCustomerTable += `<tr><td>${customer.name}</td><td>$${customer.sales}</td></tr>`;
+            });
+            $('#salesByCustomerTable').html(salesByCustomerTable);
+  
+            // Create sales by product chart
+            const productNames = data.salesByProduct.map(product => product.name);
+            const productSales = data.salesByProduct.map(product => product.sales);
+  
+            const salesByProductChart = new Chart(document.getElementById('salesByProductChart'), {
+              type: 'bar',
+              data: {
+                labels: productNames,
+                datasets: [{
+                  label: 'Sales by Product',
+                  data: productSales,
+                  backgroundColor: '#EEEEEE',
+                  borderColor: '#000000',
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+  
+            // Create sales by customer chart
+            const customerNames = data.salesByCustomer.map(customer => customer.name);
+            const customerSales = data.salesByCustomer.map(customer => customer.sales);
+  
+            const salesByCustomerChart = new Chart(document.getElementById('salesByCustomerChart'), {
+              type: 'pie',
+              data: {
+                labels: customerNames,
+                datasets: [{
+                  label: 'Sales by Customer',
+                  data: customerSales,
+                  backgroundColor: [
+                    'rgba(104, 25, 33, 0.2)',
+                    'rgba(26, 82, 118, 0.2)',
+                    'rgba(153, 128, 47, 0.2)',
+                    'rgba(36, 96, 96, 0.2)',
+                    'rgba(78, 51, 129, 0.2)',
+                    'rgba(153, 89, 32, 0.2)'
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+                }]
+              }
+            });
+  
+            // Update sales by month table
+            let salesByMonthTable = '';
+            data.salesByMonth.forEach(month => {
+              salesByMonthTable += `<tr><td>${month.month}</td><td>$${month.sales}</td></tr>`;
+            });
+            $('#salesByMonthTable').html(salesByMonthTable);
+  
+            // Create sales by month chart
+            const months = data.salesByMonth.map(month => month.month);
+            const monthSales = data.salesByMonth.map(month => month.sales);
+  
+            const salesByMonthChart = new Chart(document.getElementById('salesByMonthChart'), {
+              type: 'line',
+              data: {
+                labels: months,
+                datasets: [{
+                  label: 'Sales by Month',
+                  data: monthSales,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          },
+          error: function (error) {
+            console.error('Error fetching analytics data:', error);
+          }
+        });
+      });
+    </script>
+   -->
+             
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔹 Standalone Payment Page -->
+    <div id="payment-page" style="display: none;">
+        <h2>Stripe Payment</h2>
+        <form id="payment-page-form">
+            <label for="amount">Enter Payment Amount (CAD):</label>
+            <input type="number" id="payment-amount" name="amount" placeholder="Enter amount" required>
+            <div id="payment-card-number"></div>
+            <div id="payment-card-expiry"></div>
+            <div id="payment-card-cvc"></div>
+            <button id="payment-submit">Pay</button>
+            <p id="payment-message" class="hidden"></p>
+        </form>
+    </div>
+
+    <div id="customer-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCustomerModal()">&times;</span>
+            <h3 id="modal-title">Add Customer</h3>
+            <form id="customer-form">
+                <input type="hidden" id="customer-id">
+                <label for="customer-name">Name:</label>
+                <input type="text" id="customer-name" required>
+                <label for="customer-email">Email:</label>
+                <input type="email" id="customer-email" required>
+                <label for="customer-phone">Phone:</label>
+                <input type="text" id="customer-phone" required>
+                <button type="button" onclick="saveCustomer()">Save</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- 🔹 User Registration Page -->
+    <div id="register-page" style="display: none;">
+        <h2>User Registration</h2>
+        <form id="register-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <button type="button" onclick="registerUser()">Register</button>
+            <p id="register-message" class="hidden"></p>
+        </form>
+    </div>
+
+    <!-- 🔹 User Login Page -->
+<div id="login-page" style="display: none;">
+    <h2>User Login</h2>
+    <form id="login-form">
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="email" placeholder="Enter email" required>
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" placeholder="Enter password" required>
+
+        <button type="button" id="login-button">Login</button>
+        <p id="login-message" class="hidden"></p>
+    </form>
+</div>
+
+ <!-- User Profile Page -->
+ <div id="profile-page" style="display: none;">
+    <h2>User Profile</h2>
+    <p><strong>Username:</strong> <span id="profile-username">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="profile-email">Loading...</span></p>
+    <button onclick="logoutUser()">Logout</button>
+</div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const path = window.location.pathname;
+        console.log(`Current Path: ${path}`);
+
+        if (path === "/api/users/register") {
+            console.log("Navigating to registration page...");
+            document.getElementById("dashboard-layout").style.display = "none";
+            document.getElementById("register-page").style.display = "block";
+        } else if (path === "/api/users/login") {
+            console.log("Navigating to login page...");
+            document.getElementById("dashboard-layout").style.display = "none";
+            document.getElementById("login-page").style.display = "block";
+        } else if (path === "/profile") {
+            console.log("Navigating to user profile page...");
+            document.getElementById("dashboard-layout").style.display = "none";
+            document.getElementById("profile-page").style.display = "block";
+            getUserProfile(); // Fetch and display user profile
+        } else if (path === "/api/payment") {
+            console.log("Navigating to standalone payment page...");
+            document.getElementById("dashboard-layout").style.display = "none";
+            document.getElementById("payment-page").style.display = "block";
+            initializeStandalonePayment();
+        } else {
+            showSection("customers");
+        }
+
+        const loginButton = document.getElementById("login-button");
+        if (loginButton) {
+            loginButton.addEventListener("click", async () => {
+                const email = document.getElementById("login-email").value.trim();
+                const password = document.getElementById("login-password").value.trim();
+
+                if (!email || !password) {
+                    alert("Please enter both email and password.");
+                    return;
+                }
+
+                try {
+                    const response = await fetch("http://localhost:4000/api/users/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, password }),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        alert("Login successful!");
+                        console.log("Token:", data.token);
+                        localStorage.setItem("token", data.token); // Store token
+                        window.location.href = "/profile"; // Redirect to profile page
+                    } else {
+                        alert(`Login failed: ${data.error}`);
+                    }
+                } catch (error) {
+                    console.error("Login Error:", error);
+                    alert("Login request failed.");
+                }
+            });
+        }
+    });
+
+        function initializeStandalonePayment() {
+            const stripe = Stripe("pk_test_51QjpL2Agr1xI6w0s4JunnP5gQDMgKQVc0P6fHNiWPW6PVq9omaXfdOeqmdPkFSkcxkFolvHJx2tUjo0WqHcjaUgr00VBX2SRjg");
+            const elements = stripe.elements();
+
+            // Create Stripe Elements
+            const cardNumber = elements.create("cardNumber", { style: { base: { fontSize: "16px" } } });
+            const cardExpiry = elements.create("cardExpiry", { style: { base: { fontSize: "16px" } } });
+            const cardCvc = elements.create("cardCvc", { style: { base: { fontSize: "16px" } } });
+
+            // Mount Elements
+            cardNumber.mount("#payment-card-number");
+            cardExpiry.mount("#payment-card-expiry");
+            cardCvc.mount("#payment-card-cvc");
+
+            document.getElementById("payment-page-form").addEventListener("submit", async function (event) {
+                event.preventDefault();
+                const amount = document.getElementById("payment-amount").value;
+
+                if (!amount || amount <= 0) {
+                    alert("Please enter a valid amount.");
+                    return;
+                }
+
+                try {
+                    const response = await fetch("http://localhost:4000/api/payment", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ amount: amount * 100, currency: "cad" }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch client secret.");
+                    }
+
+                    const { clientSecret } = await response.json();
+
+                    const result = await stripe.confirmCardPayment(clientSecret, {
+                        payment_method: { card: cardNumber },
+                    });
+
+                    if (result.error) {
+                        alert(`Payment failed: ${result.error.message}`);
+                    } else {
+                        alert(`Payment successful! Payment ID: ${result.paymentIntent.id}`);
+                    }
+                } catch (error) {
+                    alert(`Error: ${error.message}`);
+                }
+            });
+        }
+
+        async function registerUser() {
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!username || !email || !password) {
+                alert("All fields are required!");
+                return;
+            }
+
+            const userData = { username, email, password };
+
+            try {
+                const response = await fetch("http://localhost:4000/api/users/register", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(userData),
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    alert(`User registered successfully! User ID: ${data.userId}`);
+                    window.location.href = "/api/users/login";
+                } else {
+                    alert(`Error: ${data.error}`);
+                }
+            } catch (error) {
+                console.error("Registration Error:", error);
+                alert("Failed to register. Try again.");
+            }
+        }
+
+
+
+    </script>
+
+
+
+</body>
+</html>

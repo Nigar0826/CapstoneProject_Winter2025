@@ -1,0 +1,558 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+
+/* ============================================= */
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ============================================= */
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #E5E5E5;
+    color: #4A6FA5;
+}
+
+/* ============================================= */
+/* Admin Dashboard Layout */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px;
+    background: #A0C4FF;
+    color: #4A6FA5;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    font-weight: 500;
+}
+
+.sidebar h2 {
+    font-size: 28px;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+/* Sidebar Menu */
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.sidebar .menu li {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar .menu li:hover {
+    background-color: rgba(244, 225, 193, 0.5);
+}
+
+/* ============================================= */
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: #E5E5E5;
+}
+
+/* Sections */
+.section {
+    display: none;
+}
+
+.section h2 {
+    font-size: 28px;
+    color: #4A6FA5;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+/* ============================================= */
+/* Customers Section */
+.search-bar input {
+    width: 97%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #6C757D;
+    border-radius: 8px;
+    background-color: #F4E1C1;
+    color: #4A6FA5;
+    transition: 0.2s;
+}
+
+.search-bar input:focus {
+    border-color: #A0C4FF;
+    outline: none;
+}
+
+/* ============================================= */
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #dde4e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+table td {
+    padding: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table tr:nth-child(even) {
+    background-color: #E5E5E5;
+}
+
+table tr:hover {
+    background-color: rgba(160, 196, 255, 0.3);
+}
+
+/* ============================================= */
+/* Button Styles */
+button {
+    padding: 8px 18px;
+    font-size: 18px;
+    background-color: #4A6FA5;
+    color: #dde4e5;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+
+/* ============================================= */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: #dde4e5;
+    color: #4A6FA5;
+    padding: 25px;
+    border-radius: 10px;
+    width: 380px; 
+    text-align: center;
+}
+
+/* Input Field Styling in Modal */
+.modal-content input {
+    width: 100%;  
+    padding: 8px;
+    margin: 5px 0;  
+    border: 1px solid #4A6FA5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Label Styling in Modal */
+.modal-content label {
+    display: block; 
+    text-align: left;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Modal Button */
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4A6FA5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-content button:hover {
+    background-color: #A0C4FF;
+}
+
+/* Close Modal Button */
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #A0C4FF;
+}
+
+
+/* ============================================= */
+/* Payment Page */
+#payment-page {
+    max-width: 650px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #dde4e5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+#payment-page h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4A6FA5;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+#payment-page input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #A0C4FF;
+    border-radius: 8px;
+    background-color: #FFF;
+    color: #4A6FA5;
+    transition: 0.3s ease-in-out;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Payment Button */
+#payment-page button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #4A6FA5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#payment-page button:hover {
+    background-color: #2E5A96;
+}
+
+/* Input Fields */
+#payment-form input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: 2px solid #A0C4FF;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    color: #4A6FA5;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+#payment-form input:focus {
+    border-color: #4A6FA5;
+    background-color: #FFF2E1;
+    outline: none;
+}
+
+/* Stripe Card Elements */
+.StripeElement {
+    padding: 14px;
+    font-size: 16px;
+    border: 2px solid #A0C4FF;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.StripeElement--focus {
+    border-color: #4A6FA5;
+    background-color: #FFF2E1;
+}
+
+/* Payment Button */
+#submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #4A6FA5;
+    color: #E5E5E5;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+#submit:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+
+
+/* ============================================= */
+/* Customers Page */
+.customers-header {
+    display: flex;
+    justify-content: space-between;  
+    align-items: center;  
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Customers Heading */
+.customers-header h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: #4A6FA5;
+    margin: 0;
+    flex-shrink: 0;  
+}
+
+/* Search Bar */
+.search-bar {
+    flex-grow: 1;
+    max-width: 100%; 
+    min-width: 300px; 
+    margin-left: 20px; 
+    display: flex;
+    justify-content: flex-end; 
+}
+
+/* Search Input */
+.search-bar input {
+    width: 100%;
+    max-width: 350px; 
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #6C757D;
+    border-radius: 8px;
+    background-color: #dde4e5;
+    color: #4A6FA5;
+}
+
+/* Table Styling */
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; 
+}
+
+.customer-table th,
+.customer-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.customer-table th {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+
+.customer-table tr:nth-child(even) {
+    background-color: #E5E5E5;
+}
+
+/* Table Alignment Fix */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #dde4e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; 
+}
+
+table th {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+table td {
+    padding: 12px;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    vertical-align: middle; 
+}
+
+/* Column Width Adjustments */
+table th:nth-child(1), 
+table td:nth-child(1) {
+    width: 10%; /* ID */
+}
+
+table th:nth-child(2), 
+table td:nth-child(2) {
+    width: 25%; /* Name */
+}
+
+table th:nth-child(3), 
+table td:nth-child(3) {
+    width: 30%; /* Email */
+}
+
+table th:nth-child(4), 
+table td:nth-child(4) {
+    width: 20%; /* Phone */
+}
+
+table th:nth-child(5), 
+table td:nth-child(5) {
+    width: 15%; /* Actions */
+}
+
+/* Buttons Alignment */
+.table-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Fix for Action Buttons */
+.table-actions button {
+    padding: 8px 14px;
+    font-size: 16px;
+    background-color: #4A6FA5;
+    color: #dde4e5;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: 0.3s;
+    border: none;
+}
+
+.table-actions button:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+
+
+/* ============================================= */
+/* Registration and Login Page */
+#register-page, #login-page {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #dde4e5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#register-page h2, #login-page h2 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #4A6FA5;
+    margin-bottom: 20px;
+}
+
+#register-form, #login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#register-form label, #login-form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4A6FA5;
+}
+
+#register-form input, #login-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #A0C4FF;
+    border-radius: 8px;
+    background-color: #E5E5E5;
+    color: #4A6FA5;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+
+/* ============================================= */
+/* Profile Page */
+#profile-page {
+    max-width: 650px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #dde4e5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+#profile-page h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4A6FA5;
+    margin-bottom: 20px;
+}
+
+#profile-page button {
+    width: 100%;
+    padding: px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #4A6FA5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    margin-top: 25px;
+}
+
+#profile-page button:hover {
+    background-color: #2E5A96;
+}
+

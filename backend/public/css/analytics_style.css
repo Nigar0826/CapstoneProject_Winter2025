@@ -1,0 +1,182 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #f4f4f4, #7ea5ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-weight: 900;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .header-section {
+    background: linear-gradient(135deg, #040e6e, #e84e98);
+    color: white;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    background-color: #165f73;
+    color: white;
+    border-radius: 16px 16px 0 0;
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .card-body {
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .card h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #333;
+  }
+  
+  .card h2 span {
+    font-weight: 400;
+    color: #040e6e;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+  }
+  
+  th, td {
+    border: none;
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  th {
+    background-color: #040e6e;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .chart-container {
+    margin-bottom: 20px;
+  }
+  
+  .animate-up {
+    animation: moveUp 1s ease-in-out;
+  }
+  
+  @keyframes moveUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  button {
+    background-color: #050a72;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #6883c8;
+  }  
+
+  /* Other existing CSS rules */
+
+.row .col-md-6 {
+    flex: 1;
+    max-width: 45%;
+  }
+  
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .card {
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .card-header {
+    background-color: #4ca1af;
+    color: white;
+    border-radius: 16px 16px 0 0;
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .card-body {
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+  }
+  
+  th, td {
+    border: none;
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  th {
+    background-color: #4ca1af;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #b8beea;
+  }  
+
+  .bar-graph {
+    background-color: #778899;
+    border: 2px solid #191970;
+    padding: 20px;
+}
+.bar {
+    background-color: #191970;
+    border: 1px solid #778899;
+    width: 50px;
+    height: 200px;
+    margin: 5px;
+}
