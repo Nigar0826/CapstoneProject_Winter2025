@@ -20,7 +20,7 @@
 
 
 // Import the mysql2 package to enable database connections
-require('dotenv').config({ path: './config/keys.env' }); // Ensure correct path to keys.env
+require('dotenv').config({ path: './config/keys.env' }); 
 const mysql = require("mysql2");
 
 // Create a connection pool for efficient database connections

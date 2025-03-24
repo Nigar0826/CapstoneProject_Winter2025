@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #007bff;
+}
+
+.navbar a {
+  color: white;
+}
+
+.navbar a:hover {
+  color: #ffc107; 
+}
+
+/* Registration Form */
+#registration {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+#registration h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+#registration .form-label {
+  color: #007bff;
+}
+
+#registration .form-control {
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+/* Product Catalog */
+#catalog {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#catalog h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 1.1rem;
+  color: #28a745; 
+}
+
+/* Booking Form */
+#booking {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#booking h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+#booking .form-label {
+  color: #007bff;
+}
+
+#booking .form-control {
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+#booking button {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+#booking button:hover {
+  background-color: #0056b3; 
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    text-align: center;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  #registration, #catalog, #booking {
+    padding: 15px;
+  }
+
+  #booking button {
+    font-size: 1rem;
+  }
+}

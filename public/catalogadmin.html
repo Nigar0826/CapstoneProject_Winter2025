@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Product Catalog</title>
+   <!-- <link rel="stylesheet" href="css/style.css" />-->
+  <link rel="stylesheet" href="css/catalog.css" />
+  <script defer src="js/catalogadmin.js"></script>
+</head>
+<body>
+  <!-- Admin Dashboard Layout -->
+  <div id="dashboard-layout">
+    <div class="dashboard">
+      <!-- Sidebar Navigation -->
+      <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul class="menu">
+          <li><a href="/admin">Customers</a></li>
+          <li><a href="/admin">Payments</a></li>
+          <li><a href="/admin">Orders</a></li>
+          <li><a href="catalogadmin.html">Catalog</a></li>
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="/admin">Feedbacks</a></li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div id="catalogadmin" class="main-content"> 
+        <div class="section">
+          <h2>Catalog</h2>
+
+          <!-- 🔍 Search Bar -->
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="Search for products..."
+            oninput="searchProducts()"
+            style="width: 100%; padding: 10px; margin-bottom: 20px;"
+          />
+
+          <!-- Product List -->
+          <table id="product-table" class="product-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="product-table-body"></tbody>
+          </table>          
+
+          <!-- Add Product -->
+          <h3>Add New Product</h3>
+          <form id="add-product-form">
+            <input
+              type="text"
+              id="product-name"
+              placeholder="Product Name"
+              required
+            /><br /><br />
+            <input
+              type="text"
+              id="product-description"
+              placeholder="Description"
+              required
+            /><br /><br />
+            <input
+              type="number"
+              id="product-price"
+              placeholder="Price"
+              required
+            /><br /><br />
+            <button type="submit">Add Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

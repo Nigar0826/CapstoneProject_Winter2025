@@ -10,7 +10,7 @@ const app = express();
 const port = 4000;
 
 const userRoutes = require("./routes/userRoutes");
-const catalogRoutes = require("./routes/productRoutes");
+const productRoutes = require("./routes/productRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const paymentRoutes = require("./routes/payment");
 const orderRoutes = require('./routes/orderRoutes');
@@ -25,20 +25,23 @@ app.use(cors({
     allowedHeaders: ["Authorization", "Content-Type"]
 }));
 
-
 // Enable CORS
 app.use(cors());
 app.use(express.json());
 
 // Register Routes
 app.use("/api/users", userRoutes);
-app.use("/api/catalog", catalogRoutes);
+app.use("/api/catalogadmin", productRoutes);
+app.use("/api/catalog", productRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/orders", orderRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/feedbacks', feedbackRoutes);
 
+// Include Routes
+app.use(require("./routes/productRoutes")); 
+app.use(require("./routes/orderRoutes")); 
 
 // Server API Homepage 
 app.get("/home", (req, res) => {
@@ -50,7 +53,6 @@ app.get("/home", (req, res) => {
 app.get("/api/users/register", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-
 
 // Serve Login Page (`http://localhost:4000/api/users/login`)
 app.get("/api/users/login", (req, res) => {
@@ -92,12 +94,9 @@ app.get('/analytics', (req, res) => {
 });
 app.use("/api/feedbacks", feedbackRoutes);
 
-
 // app.get("/admin/feedbacks", (req, res) => {
 //   res.sendFile(path.join(__dirname, "public", "adminfeedback.html"));
 // });
-
-
 
 // Handle 404 (Not Found)
 app.use((req, res) => {

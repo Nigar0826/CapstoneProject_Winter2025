@@ -10,7 +10,6 @@
     box-sizing: border-box;
 }
 
-
 /* ============================================= */
 /* General Styles */
 body {
@@ -26,7 +25,6 @@ body {
     display: flex;
     height: 100vh;
     width:100%;
-   
 }
 
 /* Sidebar */
@@ -81,11 +79,8 @@ body {
     position:relative
 }
 
-
-
 /* ============================================= */
 /* Customers Section */
-
 .search-bar input {
     width: 97%;
     padding: 12px;
@@ -171,7 +166,7 @@ body {
 #add-customer-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #4A6FA5; /* Same as Edit Button */
+    background-color: #4A6FA5; 
     color: white;
     font-weight: bold;
     border: none;
@@ -179,7 +174,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     display: block;
-    margin: 20px auto; /* Centering the button */
+    margin: 20px auto; 
     
 }
 
@@ -187,8 +182,6 @@ body {
     background-color: #A0C4FF;
     color: #4A6FA5;
 }
-
-
 
 /* ============================================= */
 /* Modal Styles */
@@ -227,7 +220,6 @@ body {
 .customer-close-modal:hover {
     color: #A0C4FF;
 }
-/*8888888888888888888888888888
 
 /* Modal Styling */
 .modal {
@@ -250,7 +242,6 @@ body {
     text-align: center;
     position: relative;
 }
-
 
 /* Input Field Styling in Modal */
 .modal-content input {
@@ -295,8 +286,6 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
-
-
 
 /* ============================================= */
 /* Payment Page */
@@ -418,9 +407,6 @@ body {
     color: #4A6FA5;
 }
 
-
-
-
 /* ============================================= */
 /* Registration and Login Page */
 #register-page, #login-page {
@@ -464,7 +450,6 @@ body {
     margin-bottom: 10px;
 }
 
-
 /* ============================================= */
 /* Profile Page */
 #profile-page {
@@ -504,7 +489,6 @@ body {
 
 /* ============================================= */
 /* Feedback Section */
-
 #feedbacks {
     width: calc(100% - 250px); /* Adjust width so it fits next to sidebar */
     margin-left: 250px; /* Align next to sidebar */
@@ -515,7 +499,6 @@ body {
     top:0;
     height:100%;
     overflow-y: auto; 
- 
 }
 
 /* Apply styles specifically to the feedback table */
@@ -557,9 +540,7 @@ body {
 #feedback-table th:nth-child(6), #feedback-table td:nth-child(6) { width: 15%; } /* Admin Response */
 #feedback-table th:nth-child(7), #feedback-table td:nth-child(7) { width: 15%; } /* Action */
 
-
 .respond-btn {
- 
     background-color: #4A6FA5;
     color: white ;
     border: none;
@@ -608,7 +589,6 @@ body {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    
 }
 
 /* Close Button for Modal */

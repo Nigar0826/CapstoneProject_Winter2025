@@ -26,6 +26,7 @@ exports.getAllFeedbacks = (req, res) => {
         res.status(200).json(results);
     });
 };
+
 // admin respond to feedback or update admin response
 exports.respondToFeedback = (req, res) => {
     const { id } = req.params;
@@ -45,8 +46,6 @@ exports.respondToFeedback = (req, res) => {
         res.status(200).json({ message: "Response added successfully!" });
     });
 };
-
-
 
 // Delete feedback
 exports.deleteFeedback = (req, res) => {

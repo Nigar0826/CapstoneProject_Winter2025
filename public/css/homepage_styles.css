@@ -13,17 +13,17 @@ body {
   }
   
   .product-img {
-    max-width: 100px; /* Adjust the width as needed */
-    height: auto; /* Maintain the aspect ratio */
+    max-width: 100px; 
+    height: auto; 
   }
   
   .custom-carousel {
-    max-width: 100px; /* Adjust the width as needed */
-    margin: 0 auto; /* Center the carousel */
+    max-width: 100px; 
+    margin: 0 auto; 
   }
   
   .custom-carousel .carousel-item img {
-    height: 100px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensures the image is cropped without stretching */
+    height: 100px; 
+    object-fit: cover; 
   }
   

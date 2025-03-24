@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BizHorizon Frontend</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BizHorizon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#registration">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#catalog">Product Catalog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#booking">Booking</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Registration Form Section -->
+  <div id="registration" class="container mt-5">
+    <h2>User Registration</h2>
+    <form id="registrationForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+
+  <!-- Product Catalog Section -->
+  <div id="catalog" class="container mt-5">
+    <h2>Product Catalog</h2>
+    <div class="row" id="productCatalog">
+      <!-- Product Cards will be added here dynamically -->
+    </div>
+  </div>
+
+  <!-- Booking Form Section -->
+  <div id="booking" class="container mt-5">
+    <h2>Booking Form</h2>
+    <form id="bookingForm">
+      <div class="mb-3">
+        <label for="service" class="form-label">Service</label>
+        <select class="form-select" id="service">
+          <option selected>Select a service</option>
+          <option value="service1">Service 1</option>
+          <option value="service2">Service 2</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Booking Date</label>
+        <input type="date" class="form-control" id="date" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/script.js"></script>
     <script src="/js/payment.js"></script>
-    <script defer src="js/adminFeedback.js"></script>
+    <script defer src="js/adminFeedback.js"></script> 
+
 </head>
 <body>
 
@@ -21,7 +22,7 @@
                     <li onclick="showSection('customers')">Customers</li>
                     <li onclick="showSection('payments')">Payments</li>
                     <li onclick="showSection('orders')">Orders</li>
-                    
+                    <li><a href="/catalogadmin.html">Catalog</a></li>
                     <!-- <li onclick="showSection('analytics')">Analytics</li> -->
                     <li><a href="http://localhost:4000/analytics.html">Analytics</a></li>
                     <li onclick="showSection('feedbacks')">Feedbacks</li> 
@@ -67,7 +68,6 @@
                 </div>
 
                 </div>
-
                 <!-- Payment Section -->
                 <div id="payments" class="section" style="display: none;">
                     <h2>Stripe Payment</h2>
@@ -354,8 +354,6 @@
   </div>
 </div>
 
-<!--Feedback code completed-->
-
     <!-- 🔹 User Registration Page -->
     <div id="register-page" style="display: none;">
         <h2>User Registration</h2>
@@ -543,12 +541,7 @@
                 alert("Failed to register. Try again.");
             }
         }
-
-
-
     </script>
-
-
 
 </body>
 </html>
