@@ -226,7 +226,7 @@ async function loginUser() {
     }
 
     try {
-        const response = await fetch("http://localhost:4000/api/users/login", {
+        const response = await fetch("http://localhost:4000/admin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -238,7 +238,7 @@ async function loginUser() {
             console.log("Login successful! Token received:", data.token);
             localStorage.setItem("token", data.token); // Store token properly
             alert("Login successful!");
-            window.location.href = "/profile"; // Redirect to profile
+            window.location.href = "/admin"; // Redirect to profile
         } else {
             alert(`Login failed: ${data.error}`);
         }
@@ -258,7 +258,7 @@ async function getUserProfile() {
     if (!token) {
         console.error("No token found. Redirecting to login...");
         alert("Session expired. Please log in again.");
-        window.location.href = "/login";
+        window.location.href = "/api/users/login";
         return;
     }
 
@@ -285,7 +285,7 @@ async function getUserProfile() {
     } catch (error) {
         console.error("Profile Fetch Error:", error);
         alert("Session expired. Please log in again.");
-        window.location.href = "/login";
+        window.location.href = "/api/users/login";
     }
 }
 
@@ -299,136 +299,11 @@ function logoutUser() {
 
 // Ensure the function runs when the profile page loads
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.pathname.includes("profile")) { 
+    if (window.location.pathname.includes("admin")) { 
         console.log("Profile page detected, fetching user data...");
         getUserProfile();
     }
 });
-
-
-// // Catalog Admin Logic
-// document.addEventListener("DOMContentLoaded", () => {
-//     const catalogSection = document.getElementById("catalogadmin");
-//     if (catalogSection) {
-//       fetchProducts();
-  
-//       const form = document.getElementById("add-product-form");
-//       if (form) {
-//         form.addEventListener("submit", function (e) {
-//           e.preventDefault();
-//           addProduct();
-//         });
-//       }
-//     }
-//   });
-  
-//   let allProducts = [];
-  
-//   async function fetchProducts() {
-//     try {
-//       const response = await fetch("/api/catalogadmin");
-//       const data = await response.json();
-//       console.log("Fetched products:", data);  
-  
-//       allProducts = data.catalog;
-//       displayProducts(allProducts);
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//     }
-//   }
-  
-//   function displayProducts(products) {
-//     const tableBody = document.getElementById("product-table-body");
-//     tableBody.innerHTML = "";
-//     products.forEach(product => {
-//       const row = document.createElement("tr");
-//       row.innerHTML = `
-//         <td>${product.id}</td>
-//         <td>${product.name}</td>
-//         <td>${product.description}</td>
-//         <td>$${parseFloat(product.price).toFixed(2)}</td>
-//         <td>
-//           <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
-//           <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
-//         </td>
-//       `;
-//       tableBody.appendChild(row);
-//     });
-//   }
-  
-//   function searchProducts() {
-//     const query = document.getElementById("search-bar").value.toLowerCase();
-//     const filtered = allProducts.filter(
-//       (p) =>
-//         p.name.toLowerCase().includes(query) ||
-//         p.description.toLowerCase().includes(query)
-//     );
-//     displayProducts(filtered);
-//   }
-  
-//   async function addProduct() {
-//     const name = document.getElementById("product-name").value;
-//     const description = document.getElementById("product-description").value;
-//     const price = document.getElementById("product-price").value;
-  
-//     try {
-//       const response = await fetch("/api/catalog", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ name, description, price }),
-//       });
-  
-//       if (!response.ok) throw new Error("Failed to add product");
-//       alert("Product added successfully!");
-//       document.getElementById("add-product-form").reset();
-//       fetchProducts();
-//     } catch (error) {
-//       console.error("Error adding product:", error);
-//     }
-//   }
-  
-//   async function deleteProduct(id) {
-//     if (!confirm("Delete this product?")) return;
-  
-//     try {
-//       const response = await fetch(`/api/catalog/${id}`, { method: "DELETE" });
-//       if (!response.ok) throw new Error("Delete failed");
-//       alert("Product deleted");
-//       fetchProducts();
-//     } catch (error) {
-//       console.error("Error deleting product:", error);
-//     }
-//   }
-  
-//   async function editProduct(id) {
-//     const product = allProducts.find((p) => p.id === id);
-//     if (!product) return alert("Product not found");
-  
-//     const newName = prompt("New name:", product.name);
-//     const newDescription = prompt("New description:", product.description);
-//     const newPrice = prompt("New price:", product.price);
-  
-//     if (!newName || !newDescription || !newPrice) return;
-  
-//     try {
-//       const response = await fetch(`/api/catalog/${id}`, {
-//         method: "PUT",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//           name: newName,
-//           description: newDescription,
-//           price: newPrice,
-//         }),
-//       });
-  
-//       if (!response.ok) throw new Error("Update failed");
-//       alert("Product updated");
-//       fetchProducts();
-//     } catch (error) {
-//       console.error("Error updating product:", error);
-//     }
-//   }
-
 
 // Attach functions to `window` so they are accessible in Console
 window.logoutUser = logoutUser;

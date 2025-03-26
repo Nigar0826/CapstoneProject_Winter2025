@@ -67,11 +67,9 @@ body {
   color: #4A6FA5;
 }
 
-.sidebar .menu li a:hover,
-.sidebar .menu li a.active {
-  color: #4B0082;
-  text-decoration: underline;
-  font-weight: 900;
+.sidebar .menu li a:hover {
+  color: #4A6FA5;
+  text-decoration: none;
 }
 
 /* Main Content */
@@ -156,12 +154,12 @@ button {
 }
 
 .delete-btn {
-  background-color: #FF6B6B;
+  background-color: #4A6FA5;
   color: white;
 }
 
 .delete-btn:hover {
-  background-color: #d34b4b;
+  background-color: #4A6FA5;
 }
 
 /* Add Product Form */

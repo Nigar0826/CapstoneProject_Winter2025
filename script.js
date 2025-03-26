@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     try {
       // Send the registration data to the backend (POST /api/register)
-      const response = await fetch('http://127.0.0.1:5500/api/register', {
+      const response = await fetch('http://127.0.0.1:4000/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function fetchProductCatalog() {
     try {
-      const response = await fetch('http://127.0.0.1:5500/api/catalog');
+      const response = await fetch('http://127.0.0.1:4000/api/catalog');
       if (!response.ok) {
         throw new Error('Failed to load products');
       }
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Call the function to load products
   fetchProductCatalog();
 
-  // **Booking Form Validation and Submission**
+  // Booking Form Validation and Submission
   const bookingForm = document.getElementById('bookingForm');
 
   bookingForm.addEventListener('submit', async function (e) {

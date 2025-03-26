@@ -169,6 +169,7 @@ CapstoneProject_T101/
 - http://localhost:4000/admin
 - http://localhost:4000/api/customers
 - http://localhost:4000/api/feedbacks
+- http://localhost:4000/api/orders
 
 ### User Authentication & Management
 - Register User → POST /api/users/register.
