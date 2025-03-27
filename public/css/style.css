@@ -605,7 +605,7 @@ body {
 .profile-card button:hover {
     background-color: #2E5A96;
 }
-
+/*##############################################################################################################################################################################################################
 /* Feedback Section */
 #feedbacks {
     width: calc(100% - 250px); 
@@ -753,10 +753,214 @@ body {
         font-size: 14px;
         padding: 8px;
     }
+    
 
     .feedback-actions button {
         font-size: 12px;
-        padding: 5px 10px;
+        min-width:90px;
+        padding: 8px 12px;
     }
+}
+
+.feedback-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+/*##############################################################################################################################################################################################################
+
+/* Orders Table Column */
+
+#orders {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* 🟦 Orders Table Styling */
+#orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #dde4e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+    border-radius: 6px;                         /* Optional: smooth corners */
+    overflow: hidden; /* Forces uniform column widths */
+}
+
+/* Table Headers */
+#orders-table th {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Table Cells */
+#orders-table td {
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Even Rows Shading */
+#orders-table tr:nth-child(even) {
+    background-color: #E5E5E5;
+}
+
+/*  Action Buttons */
+.order-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.order-edit-btn,
+.order-delete-btn {
+    background-color: #4A6FA5;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 60px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.order-edit-btn:hover,
+.order-delete-btn:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+
+/* Responsive Fix */
+@media screen and (max-width: 768px) {
+    #orders-table th,
+    #orders-table td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .order-edit-btn,
+    .order-delete-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+        min-width: 55px;
+    }
+}
+
+
+
+
+/**88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+/* Add- Order Modal Styling */
+#order-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;                 
+    max-width: 450px;           
+    background-color: #dde4e5;
+    border-radius: 12px;
+    padding: 25px 30px 30px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    text-align: left;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;         
+}
+
+#order-modal h2 {
+    text-align: center;
+    color: #4A6FA5;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#order-modal .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 22px;
+    color: #4A6FA5;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Fields */
+#order-modal label {
+    font-weight: bold;
+    color: #4A6FA5;
+    margin-top: 8px;
+    display: block;
+}
+
+#order-modal input,
+#order-modal select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: 1px solid #4A6FA5;
+    font-size: 14px;
+}
+
+/* Save button */
+#order-modal button {
+    background-color: #4A6FA5;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#order-modal button:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
+}
+/*888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+/* Add-order button */
+#add-order-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4A6FA5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: block;
+    margin: 30px auto 10px auto;
+}
+
+#add-order-btn:hover {
+    background-color: #A0C4FF;
+    color: #4A6FA5;
 }
 

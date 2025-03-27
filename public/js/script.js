@@ -305,6 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
 // Attach functions to `window` so they are accessible in Console
 window.logoutUser = logoutUser;
 window.getUserProfile = getUserProfile;

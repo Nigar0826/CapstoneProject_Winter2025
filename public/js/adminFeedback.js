@@ -27,8 +27,10 @@ function populateFeedbackTable(feedbacks) {
             <td>${feedback.rating}</td>
             <td>${feedback.admin_response ? feedback.admin_response : "No response yet"}</td>
             <td>
-                <button class="respond-btn" onclick="openResponseModal(${feedback.id}, '${feedback.admin_response}')">Respond</button>
-                <button class="delete-btn" onclick="deleteFeedback(${feedback.id})">Delete</button>
+                <div class="feedback-actions">
+                    <button class="respond-btn" onclick="openResponseModal(${feedback.id}, '${feedback.admin_response}')">Respond</button>
+                    <button class="delete-btn" onclick="deleteFeedback(${feedback.id})">Delete</button>
+                </div>
             </td>
         `;
 

@@ -42,8 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <td>${product.description}</td>
         <td>$${parseFloat(product.price).toFixed(2)}</td>
         <td>
-          <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
-          <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
+          <div class="product-actions-buttons">
+               <button class="edit-btn" onclick="editProduct(${product.id})">Edit</button>
+               <button class="delete-btn" onclick="deleteProduct(${product.id})">Delete</button>
+           </div>
         </td>
       `;
       tableBody.appendChild(row);
@@ -127,4 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(err);
     }
   }
+
+  // Show modal
+document.getElementById("add-product-btn").addEventListener("click", () => {
+  document.getElementById("product-modal").style.display = "flex";
+});
+
+// Close modal
+function closeProductModal() {
+  document.getElementById("product-modal").style.display = "none";
+}
+
   

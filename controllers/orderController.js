@@ -30,13 +30,13 @@ exports.addOrder = (req, res) => {
 
 exports.updateOrder = (req, res) => {
   const orderId = req.params.id;
-  const { customer_id, product_id, quantity } = req.body;
+  const { customer_id, product_id, quantity , status} = req.body;
 
-  if (!customer_id || !product_id || !quantity) {
+  if (!customer_id || !product_id || !quantity || !status) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
-  orderModel.update(orderId, { customer_id, product_id, quantity }, (err, result) => {
+  orderModel.update(orderId, { customer_id, product_id, quantity, status }, (err, result) => {
     if (err) {
       return res.status(500).json({ error: "Error updating order", details: err });
     }

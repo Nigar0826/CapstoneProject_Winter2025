@@ -7,6 +7,7 @@ const createOrdersTable = `
     product_id INT,
     quantity INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'Pending',
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (product_id) REFERENCES catalog(id)
   )
@@ -27,13 +28,13 @@ module.exports = {
   },
 
   create: (order, callback) => {
-    const query = 'INSERT INTO orders (customer_id, product_id, quantity) VALUES (?, ?, ?)';
-    connection.query(query, [order.customer_id, order.product_id, order.quantity], callback);
+    const query = 'INSERT INTO orders (customer_id, product_id, quantity, status) VALUES (?, ?, ?, ?)';
+    connection.query(query, [order.customer_id, order.product_id, order.quantity, order.status], callback);
   },
 
   update: (id, order, callback) => {
-    const query = 'UPDATE orders SET customer_id = ?, product_id = ?, quantity = ? WHERE id = ?';
-    connection.query(query, [order.customer_id, order.product_id, order.quantity, id], callback);
+    const query = 'UPDATE orders SET customer_id = ?, product_id = ?, quantity = ?, status = ? WHERE id = ?';
+    connection.query(query, [order.customer_id, order.product_id, order.quantity, order.status, id], callback);
   },
 
   delete: (id, callback) => {
