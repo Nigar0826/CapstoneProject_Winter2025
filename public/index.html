@@ -80,11 +80,11 @@
                             <!-- Orders will be dynamically inserted here -->
                         </tbody>
                         </table>
-                        <button id="add-order-btn" onclick="showAddOrderModal()">Add Order</button>
+                        <button id="add-order-btn" onclick="document.getElementById('order-modal').style.display='flex'">Add Order</button>
                         <!-- Add Order Modal -->
-                        <div id="order-modal" class="modal" style="display: none;">
+                        <div id="order-modal" class="order-modal">
                             <div class="modal-content">
-                            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+                            <span class="close-modal" onclick="document.getElementById('order-modal').style.display='none'">&times;</span>
                             <h3>Add New Order</h3>
                             <form id="order-form">
                                 <label for="order-customer-id">Customer:</label>
@@ -132,6 +132,7 @@
                           </thead>
                           <tbody id="customer-table-body"></tbody>
                       </table>
+                      <button id="add-customer-btn" onclick="showAddCustomerModal()">Add Customer</button>
                       <div id="customer-modal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <span class="close-modal" onclick="closeCustomerModal()">&times;</span>
@@ -147,7 +148,6 @@
                                 <button type="button" onclick="saveCustomer()">Save</button>
                             </form>
                         </div>
-                        <button id="add-customer-btn" onclick="showAddCustomerModal()">Add Customer</button>
                   </div>
 
                   </div>

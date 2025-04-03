@@ -10,12 +10,11 @@ BizHorizon is a fully responsive operations management platform designed for sma
 - Product Catalog & Customer Management
 - Payment Integration (Stripe)
 - Admin Dashboard
-- Frontend Implementation (basic frontend implemented)
+- Frontend Implementation 
 - RESTful API Development with Express.js and MySQL
 - Role-Based Access Control (RBAC)
 - Postman API Testing
-- Orders Management & Analytics APIs (pending implementation)
-- Modern & Responsive UI (Soft Minimalist Palette applied)
+- Modern & Responsive UI 
 - Dashboard with Interactive UI Elements
 
 This README provides an overview of the completed components, project structure, and setup guide.
@@ -28,49 +27,69 @@ CapstoneProject_T101/
 │   ├── keys.env             # Environment variables (DO NOT COMMIT)
 │
 │── controllers/
-│   ├── catalogController.js  # Handles catalog-related requests
-│   ├── customerController.js # Handles customer-related logic
-│   ├── paymentController.js  # Handles payment transactions (Stripe)
-│   ├── userController.js     # Manages user authentication & profile updates
-|   |__ feedbackController.js # Manage feedback-related logic
+│   ├── analyticsController.js  # Handles analytics-related requests
+│   ├── customerController.js   # Handles customer-related logic
+│   ├── feedbackController.js   # Manages feedback-related logic
+│   ├── orderController.js      # Manages order-related logic
+│   ├── paymentController.js    # Handles payment transactions (Stripe)
+│   ├── productController.js    # Handles product management logic
+│   ├── userController.js       # Manages user authentication & profile updates
 │
 │── middlewares/
-│   ├── authMiddleware.js     # Authentication middleware for JWT verification
+│   ├── authMiddleware.js       # Authentication middleware for JWT verification
 │
 │── models/
-│   ├── catalogModel.js      # Catalog schema and queries
-│   ├── customerModel.js     # Customer data model
-│   ├── paymentModel.js      # Payment transactions schema
-│   ├── userModel.js         # User authentication schema
-|   |__ feedbackModel.js     # feedback data model
+│   ├── customerModel.js        # Customer data model
+│   ├── feedbackModel.js        # Feedback data model
+│   ├── orderModel.js           # Order data model
+│   ├── paymentModel.js         # Payment transactions schema
+│   ├── productModel.js         # Product catalog schema
+│   ├── userModel.js            # User authentication schema
 │
-│── node_modules/            # Dependencies (Ignored in Git)
+│── node_modules/               # Dependencies (Ignored in Git)
 │
 │── public/
+│   ├── assets/                  # Static assets (images, icons, etc.)
 │   ├── css/
-│   │   ├── style.css        # Frontend styling 
+│   │   ├── analytics_style.css  # Styles for analytics page
+│   │   ├── catalog.css          # Styles for catalog page
+│   │   ├── homepage_styles.css  # Styles for homepage
+│   │   ├── style.css            # Global styles for the application
 │   ├── js/
-│   │   ├── payment.js       # Payment handling scripts
-│   │   ├── script.js        # Main frontend script
-|   |   |__ adminFeedback.js  # feedback handling script
-│   ├── index.html           # Frontend UI
+│   │   ├── adminFeedback.js     # Handles feedback management
+│   │   ├── adminOrders.js       # Handles order management for admin
+│   │   ├── analytics.js         # Handles analytics logic
+│   │   ├── catalog.js           # Manages catalog display and actions
+│   │   ├── catalogadmin.js      # Admin catalog management
+│   │   ├── checkout.js          # Handles checkout functionality
+│   │   ├── payment.js           # Payment handling script
+│   │   ├── script.js            # Main frontend script
+│   ├── analytics.html           # Admin Analytics page
+│   ├── catalog.html             # Public Catalog page
+│   ├── catalogadmin.html        # Admin Product Management page
+│   ├── checkout.html            # Checkout page for payments
+│   ├── home.html                # Home page
+│   ├── index.html               # Landing page (Main)
 │
 │── routes/
-│   ├── catalogRoutes.js     # Catalog API routes
-│   ├── customerRoutes.js    # Customer-related API routes
-│   ├── payment.js           # Payment-related API routes
-│   ├── userRoutes.js        # User authentication API routes
-|    |__ adminRoutes.js       # Feedback API routes
+│   ├── analyticsRoutes.js       # Analytics API routes
+│   ├── customerRoutes.js        # Customer-related API routes
+│   ├── feedbackRoutes.js        # Feedback API routes
+│   ├── orderRoutes.js           # Order management API routes
+│   ├── payment.js               # Payment-related API routes
+│   ├── productRoutes.js         # Product-related API routes
+│   ├── userRoutes.js            # User authentication API routes
 │
-│── views/                   # Handlebars/EJS templates (if applicable)
-│
-│── .env                     # Environment variables (DO NOT COMMIT)
-│── .gitignore               # Files/Folders ignored in Git
-│── customers.json           # Sample data for customers
-│── package-lock.json        # Dependency lock file
-│── package.json             # Node.js project dependencies
-│── README.md                # Project documentation
-│── server.js                # Main server file (Entry Point)
+│── .env                        # Environment variables (DO NOT COMMIT)
+│── .gitignore                  # Files/Folders ignored in Git
+│── customers.json              # Sample data for customers
+│── index.html                  # Main frontend page
+│── package-lock.json           # Dependency lock file
+│── package.json                # Node.js project dependencies
+│── README.md                   # Project documentation
+│── script.js                   # Main script for UI handling
+│── server.js                   # Main server file (Entry Point)
+│── styles.css                  # General frontend styles
 
 ```
 
@@ -95,7 +114,6 @@ CapstoneProject_T101/
 - Font Awesome – Icons for UI enhancement.
 - Google Fonts – Improved typography and design customization.
 - Custom CSS – Modern and responsive UI with Soft Minimalist color palette.
-
 
 ### Payment Integration:
 - Stripe API – Secure online payment processing.
@@ -130,37 +148,47 @@ CapstoneProject_T101/
 - CRUD operations for customer management.
 - Added search functionality for easier customer retrieval.
 
-### 4. Payment Integration (Stripe)
+### 4. Orders Management
+- Order Placement with customer and product association.
+- CRUD operations for order management.
+- Added real-time order status updates and validations.
+- Orders stored in the MySQL database with proper foreign key relationships.
+
+### 5. Payment Integration (Stripe)
 - Stripe API Integration for secure online transactions.
 - Implemented Stripe.js & Elements for a better UI/UX in payment handling.
 - Test Card support for payment testing.
 - Enhanced error handling for failed or declined transactions.
 
-### 5. RESTful API Development
+### 6. RESTful API Development
 - Well-structured API routes, controllers, and models for all key functionalities.
 - Implemented role-based access control (RBAC) for better security.
 - Tested and Debugged APIs using Postman.
 - Optimized database queries for MySQL.
 - Improved error handling and validation mechanisms.
 
-### 6. Admin Dashboard (Backend & Frontend APIs)
+### 7. Admin Dashboard (Backend & Frontend APIs)
 - Backend APIs implemented for managing Users, Products, Customers, and Payments
 - Frontend UI built with improved styling and Soft Minimalist Palette for modern design.
 - Dashboard navigation and sidebar implemented with dynamic sections.
 - Button styles and UI elements improved for better user experience.
 
-### 7. Code & Database Enhancements
+### 8. Analytics Management
+- Integrated real-time data analytics in the admin dashboard.
+- Implemented API to visualize business data dynamically.
+
+### 9. Feedback Management
+- Feedback submission with comments and rating.
+- Admin Response functionality to user feedback.
+- CRUD operations for feedback management.
+
+### 10. Code & Database Enhancements
 - Fixed various issues in Models, Controllers, and Routes.
 - Successfully created and validated MySQL tables for users, catalog, and customers. 
 - Code refactored and cleaned for better maintainability.
 
 ## Pending Features
-- Orders Management – (Planned for future implementation).
-- Product Management – (Planned for future implementation).
-- Analytics & Reporting (Not implemented yet).
 - File Uploads (Multer) – (Feature planned for future versions).
-- Deployment & CI/CD Setup – (Final production-ready deployment improvements).
-
 
 ## API Endpoints:
 - http://localhost:4000/api/users
@@ -191,8 +219,6 @@ CapstoneProject_T101/
 - Update Customer Details → PUT /api/customers/:id.
 - Delete a Customer → DELETE /api/customers/:id.
 
-
-
 ### Payment Processing
 - Process Payment via Stripe → POST /api/payment.
 - Handle Payment Errors (Automatic error handling for invalid transactions).
@@ -200,21 +226,20 @@ CapstoneProject_T101/
 ### Admin Dashboard 
 - Admin Panel Route → GET /admin
 - Backend routes for managing Users, Products, Customers, and Payments.
+
+### Analytics Management 
+- Get Analytics Data → GET /api/analytics
+
+### Feedback Management    
+- Retrieve All Feedbacks → GET /api/feedbacks.
+- Add a New Feedback → POST /api/feedbacks.
+- Update Feedback Details → PUT /api/feedbacks/:id.
+- Delete a Feedback → DELETE /api/feedbacks/:id.
 ---
 
-
-## Defined Frontend Pages
+## Frontend Pages
 - http://localhost:4000/admin (Dashboard)
-- http://localhost:4000/admin/customers (Customers)
-- http://localhost:4000/admin/payments (Payments)
-- http://localhost:4000/admin/orders (Orders)
-- http://localhost:4000/admin/analytics (Analytics)
-- http://localhost:4000/admin/feedbacks (Feedbacks)
-- http://localhost:4000/api/users/register (User Registration)
-- http://localhost:4000/api/users/login (User Login)
-- http://localhost:4000/profile (User Profile)
-- http://localhost:4000/api/payment (Standalone Payment Page)
-
+- http://localhost:4000/home (Home page for end users)
 
 ## Installation & Setup
 ### Prerequisites: 
@@ -265,23 +290,17 @@ The server runs on: `http://localhost:4000`
    - Failure: Proper error messages shown.
 ---
 
-## Next Steps: 
-- Implement Orders, Products & Analytics APIs.
-- Complete final UI design improvements.
-- Deploy the project & finalize documentation.
-- Finalize documentation.
-- Prepare for the final presentation.
-
-
-### Feedback Management    added by Fatima
-- Retrieve All Feedbacks → GET /api/feedbacks.
-- Add a New Feedback → POST /api/feedbacks.
-- Update Feedback Details → PUT /api/feedbacks/:id.
-- Delete a Feedback → DELETE /api/feedbacks/:id.
+## Enhancements: 
+- Security Enhancements – Strengthen security measures, including rate limiting, input sanitization, and vulnerability scanning.
+- Inventory Management Module – Add inventory tracking and stock management for seamless product catalog maintenance.
+- Data Backup & Recovery – Set up automatic backups and database recovery options to ensure data safety.
+- AI/ML for Business Insights – Integrate AI/ML for intelligent predictions on customer behavior and sales trends.
+- Implement Functionality for End Users – Develop a customer-facing interface for end users to browse the product catalog, place orders, and manage their profiles.
+- Mobile App Development – Plan a mobile version of BizHorizon to improve accessibility for business owners.
 
 ## Contributors
-- Nigar - Project Lead, Payment Integration, API Testing, UI/UX Design, Stripe.js Integration, Documentation, Deployment.
+- Nigar - Project Lead, Payment Integration, Stripe.js Integration, API Testing, Documentation, Deployment.
 - Elizabeth - Back-End Development, Authentication, Database Optimization.
-- Anar - Front-End Development, UI/UX Design, Stripe.js Integration.
+- Anar - Front-End Development, UI/UX Design.
 - Fatima - Admin Dashboard, API Documentation, Error Handling.
 
