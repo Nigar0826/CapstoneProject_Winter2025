@@ -20,7 +20,7 @@ const feedbackRoutes = require('./routes/feedbackRoutes');
 
 // Enable CORS with Authorization Header
 app.use(cors({
-    origin: "http://localhost:4000", 
+    origin: "https://bizhorizon.onrender.com", 
     credentials: true,
     allowedHeaders: ["Authorization", "Content-Type"]
 }));

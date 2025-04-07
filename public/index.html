@@ -52,8 +52,6 @@
                         </div>
                     </div>
 
-
-
                     <!-- Orders Section -->
                     <div id="orders" class="section" style="display: none;">
                         <h2>Orders</h2>
@@ -82,7 +80,7 @@
                         </table>
                         <button id="add-order-btn" onclick="document.getElementById('order-modal').style.display='flex'">Add Order</button>
                         <!-- Add Order Modal -->
-                        <div id="order-modal" class="order-modal">
+                        <div id="order-modal" class="order-modal" style="display: none;">
                             <div class="modal-content">
                             <span class="close-modal" onclick="document.getElementById('order-modal').style.display='none'">&times;</span>
                             <h3>Add New Order</h3>
@@ -108,7 +106,6 @@
                                         <option value="cancelled">Cancelled</option>
                                     </select>
 
-                        
                                 <button type="button" onclick="saveOrder()">Save</button>
                             </form>
                             </div>
@@ -243,13 +240,13 @@
           <input type="password" id="login-password" name="password" placeholder="Enter password" required>
 
           <button type="button" id="login-button" class="button-style">Login</button>
+          <p><strong>Don't have an account? Register</strong></p>
           <button type="button" class="button-style" onclick="window.location.href='/api/users/register'">
             Register
         </button>
           <p id="login-message" class="hidden"></p>
       </form>
   </div>
-
   
   <div id="profile-page" style="display: none;">
       <h2>User Profile</h2>

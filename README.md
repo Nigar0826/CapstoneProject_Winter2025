@@ -5,7 +5,7 @@ For our Capstone Project, our team has developed BizHorizon – an Operations Ma
 
 BizHorizon is a fully responsive operations management platform designed for small businesses. It provides a modernized UI, secure authentication, and seamless payment integration via Stripe. With an interactive admin dashboard, real-time data visualization, and automated order processing, BizHorizon helps businesses enhances online presence and optimizes business operations.
 
-### Key Features:
+### Key Features
 - User Authentication (Login, Registration, Profile)
 - Product Catalog & Customer Management
 - Payment Integration (Stripe)
@@ -23,8 +23,8 @@ This README provides an overview of the completed components, project structure,
 ```
 CapstoneProject_T101/
 │── config/
-│   ├── database.js          # Database connection setup
-│   ├── keys.env             # Environment variables (DO NOT COMMIT)
+│   ├── database.js             # Database connection setup
+│   ├── keys.env                # Environment variables (DO NOT COMMIT)
 │
 │── controllers/
 │   ├── analyticsController.js  # Handles analytics-related requests
@@ -95,7 +95,7 @@ CapstoneProject_T101/
 
 ---
 ## Technologies Used
-### Backend:
+### Backend
 - Node.js – JavaScript runtime for server-side execution.
 - Express.js – Web framework for building RESTful APIs.
 - MySQL – Relational database for storing users, products, payments, and customer data.
@@ -106,7 +106,7 @@ CapstoneProject_T101/
 - Cors – Enables cross-origin requests for API communication.
 - Express Validator – Input validation and sanitization for API endpoints.
 
-### Frontend:
+### Frontend
 - HTML, CSS, JavaScript – Core web technologies for building the user interface.
 - Bootstrap – Responsive design framework for styling.
 - AJAX (Fetch API / Axios) – Handles API requests asynchronously.
@@ -115,17 +115,17 @@ CapstoneProject_T101/
 - Google Fonts – Improved typography and design customization.
 - Custom CSS – Modern and responsive UI with Soft Minimalist color palette.
 
-### Payment Integration:
+### Payment Integration
 - Stripe API – Secure online payment processing.
 - Stripe.js & Elements – Client-side payment handling for improved UX.
 - Test Cards – Supports Stripe’s test environment for simulating real payments.
 
-### API Development & Testing:
+### API Development & Testing
 - Postman – API testing and debugging tool.
 - Express Validator – Used for request validation and sanitization.
 - Error Handling & Logging – Implemented structured error responses for debugging.
 
-### Version Control & Deployment:
+### Version Control & Deployment
 - Git & GitHub – Version control and collaboration.
 ---
 
@@ -241,8 +241,14 @@ CapstoneProject_T101/
 - http://localhost:4000/admin (Dashboard)
 - http://localhost:4000/home (Home page for end users)
 
+## Links
+- GitHub Repository: [CapstoneProject_Winter2025](https://github.com/Nigar0826/CapstoneProject_Winter2025)  
+- Live Deployment (Frontend): [https://bizhorizon.onrender.com](https://bizhorizon.onrender.com)  
+- Live Deployment (Backend): [https://bizhorizon-backend.onrender.com](https://bizhorizon-backend.onrender.com)
+
+
 ## Installation & Setup
-### Prerequisites: 
+### Prerequisites 
 - Node.js installed on your machine.
 - MySQL Database setup.
 - Stripe Account (required for payments).
@@ -290,7 +296,7 @@ The server runs on: `http://localhost:4000`
    - Failure: Proper error messages shown.
 ---
 
-## Enhancements: 
+## Enhancements 
 - Security Enhancements – Strengthen security measures, including rate limiting, input sanitization, and vulnerability scanning.
 - Inventory Management Module – Add inventory tracking and stock management for seamless product catalog maintenance.
 - Data Backup & Recovery – Set up automatic backups and database recovery options to ensure data safety.
