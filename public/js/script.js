@@ -1,12 +1,8 @@
 console.log("Script loaded!");
 
-// Use dynamic backend base URL (local OR deployed)
-const API_BASE_URL = window.location.hostname.includes("localhost")
-  ? "http://localhost:4000"
-  : "https://bizhorizon-backend.onrender.com";
+const API_CUSTOMERS = "http://localhost:4000/api/customers";
+const API_USERS = "http://localhost:4000/api/users"; 
 
-const API_CUSTOMERS = `${API_BASE_URL}/api/customers`; 
-const API_USERS = `${API_BASE_URL}/api/users`;         
 
 // Fetch customers from the backend
 async function fetchCustomers() {
@@ -198,7 +194,7 @@ async function registerUser() {
     const userData = { username, email, password };
 
     try {
-        const response = await fetch(`${API_USERS}/register`, {
+        const response = await fetch("http://localhost:4000/api/users/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData),
@@ -208,7 +204,8 @@ async function registerUser() {
 
         if (response.ok) {
             alert(`User registered successfully!`);
-            window.location.href = `${API_USERS}/login`; 
+            console.log("Redirecting to: /api/users/login");
+            window.location.href = "/api/users/login"; 
         } else {
             alert(`Error: ${data.error}`);
         }
@@ -229,7 +226,7 @@ async function loginUser() {
     }
 
     try {
-        const response = await fetch(`${API_USERS}/login`, {
+        const response = await fetch("http://localhost:4000/admin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -261,12 +258,12 @@ async function getUserProfile() {
     if (!token) {
         console.error("No token found. Redirecting to login...");
         alert("Session expired. Please log in again.");
-        window.location.href = `${API_USERS}/login`;
+        window.location.href = "/api/users/login";
         return;
     }
 
     try {
-        const response = await fetch(`${API_USERS}/profile`, {
+        const response = await fetch("http://localhost:4000/api/users/profile", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,  
@@ -288,7 +285,7 @@ async function getUserProfile() {
     } catch (error) {
         console.error("Profile Fetch Error:", error);
         alert("Session expired. Please log in again.");
-        window.location.href = `${API_USERS}/login`;
+        window.location.href = "/api/users/login";
     }
 }
 
@@ -297,7 +294,7 @@ function logoutUser() {
     console.log("Logging out user...");
     localStorage.removeItem("token");  // Clear stored token
     alert("Logged out successfully!");
-    window.location.href = `${API_USERS}/login`;  // Redirect to login page
+    window.location.href = "/api/users/login";  // Redirect to login page
 }
 
 // Ensure the function runs when the profile page loads
