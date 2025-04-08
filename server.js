@@ -75,13 +75,19 @@ app.get('/admin', (req, res) => {
 //   res.redirect("/api/users/profile");
 // });
 
-// Ensure static files are only served AFTER API routes are checked
+// Serve index.html as default homepage on "/"
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Serve static files (must come after routes)
 app.use(express.static("public"));
 
-// Serve Admin Dashboard (`http://localhost:4000/admin`)
+// Serve Admin Dashboard
 app.get("/admin", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
 
 // // Serve static files (Admin Dashboard + Public Assets)
 // app.use(express.static(path.join(__dirname, "public")));

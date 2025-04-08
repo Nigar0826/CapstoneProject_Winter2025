@@ -162,10 +162,10 @@ button {
   background-color: #4A6FA5;
 }
 
-
 .product-actions-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -178,6 +178,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
 }
+
 #add-product-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -196,8 +197,6 @@ button {
   background-color: #A0C4FF;
   color: #4A6FA5;
 }
-
-
 
 /* Modal Styling */
 .modal {
@@ -251,3 +250,6 @@ button {
   cursor: pointer;
   color: #4A6FA5;
 }
+
+
+

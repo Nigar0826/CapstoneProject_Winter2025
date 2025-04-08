@@ -1,8 +1,12 @@
-console.log("🚀 Script loaded!");
+console.log("Script loaded!");
 
-const API_CUSTOMERS = "http://localhost:4000/api/customers";
-const API_USERS = "http://localhost:4000/api/users"; 
+// Use dynamic backend base URL (local OR deployed)
+const API_BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:4000"
+  : "https://bizhorizon-backend.onrender.com";
 
+const API_CUSTOMERS = `${API_BASE_URL}/api/customers`; 
+const API_USERS = `${API_BASE_URL}/api/users`;         
 
 // Fetch customers from the backend
 async function fetchCustomers() {
@@ -194,7 +198,7 @@ async function registerUser() {
     const userData = { username, email, password };
 
     try {
-        const response = await fetch("http://localhost:4000/api/users/register", {
+        const response = await fetch(`${API_USERS}/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(userData),
@@ -204,8 +208,7 @@ async function registerUser() {
 
         if (response.ok) {
             alert(`User registered successfully!`);
-            console.log("Redirecting to: /api/users/login");
-            window.location.href = "/api/users/login"; 
+            window.location.href = `${API_USERS}/login`; 
         } else {
             alert(`Error: ${data.error}`);
         }
@@ -226,7 +229,7 @@ async function loginUser() {
     }
 
     try {
-        const response = await fetch("http://localhost:4000/admin", {
+        const response = await fetch(`${API_USERS}/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
@@ -258,12 +261,12 @@ async function getUserProfile() {
     if (!token) {
         console.error("No token found. Redirecting to login...");
         alert("Session expired. Please log in again.");
-        window.location.href = "/api/users/login";
+        window.location.href = `${API_USERS}/login`;
         return;
     }
 
     try {
-        const response = await fetch("http://localhost:4000/api/users/profile", {
+        const response = await fetch(`${API_USERS}/profile`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,  
@@ -285,7 +288,7 @@ async function getUserProfile() {
     } catch (error) {
         console.error("Profile Fetch Error:", error);
         alert("Session expired. Please log in again.");
-        window.location.href = "/api/users/login";
+        window.location.href = `${API_USERS}/login`;
     }
 }
 
@@ -294,7 +297,7 @@ function logoutUser() {
     console.log("Logging out user...");
     localStorage.removeItem("token");  // Clear stored token
     alert("Logged out successfully!");
-    window.location.href = "/api/users/login";  // Redirect to login page
+    window.location.href = `${API_USERS}/login`;  // Redirect to login page
 }
 
 // Ensure the function runs when the profile page loads
@@ -304,7 +307,6 @@ document.addEventListener("DOMContentLoaded", () => {
         getUserProfile();
     }
 });
-
 
 // Attach functions to `window` so they are accessible in Console
 window.logoutUser = logoutUser;

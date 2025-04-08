@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!res.ok) throw new Error("Failed to add");
       alert("Product added!");
       document.getElementById("add-product-form").reset();
+      closeProductModal(); 
       fetchProducts();
     } catch (err) {
       console.error(err);
